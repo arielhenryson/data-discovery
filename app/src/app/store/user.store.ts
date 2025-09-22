@@ -42,5 +42,11 @@ export const UserStore = signalStore(
 
       return true
     },
+
+    async setUser(user: User) {
+      console.log('setUser', user)
+
+      patchState(store, { user })
+    },  
   })),
 )

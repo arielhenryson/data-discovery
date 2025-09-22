@@ -1,21 +1,15 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core'
-import { Router } from '@angular/router'
-import { UserStore } from '../../../store/user.store'
+import { OpenIdService } from '../../../services/open-id/open-id.service'
 
 @Component({
   templateUrl: 'login.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [OpenIdService],
 })
 export class LoginComponent {
-  userStore = inject(UserStore)
-
-  router = inject(Router)
+  openIdService = inject(OpenIdService) 
 
   async login() {
-    const success = await this.userStore.signIn()
-
-    if (success) {
-      this.router.navigate([ '/' ])
-    }
+    this.openIdService.signIn()
   }
 }
