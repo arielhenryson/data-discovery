@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/main/home/home.component'
 import { MainComponent } from './pages/main/main.component'
 import { OpenIdService } from './services/open-id/open-id.service'
 import { UserStore } from './store/user.store'
+import { NotFoundComponent } from './pages/blank/not-found.html/not-found.component'
 
 export const routes: Routes = [
   {
@@ -47,4 +48,8 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  }
 ]
