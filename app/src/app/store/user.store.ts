@@ -30,19 +30,6 @@ export const UserStore = signalStore(
   withMethods((
     store, 
   ) => ({
-    async logout() {
-      console.log('logout')
-      patchState(store, { user: undefined })
-    },
-
-    async signIn(): Promise<boolean> {
-      console.log('signIn')
-
-      patchState(store, { user: undefined })
-
-      return true
-    },
-
     async setUser(user: User) {
       console.log('setUser', user)
 

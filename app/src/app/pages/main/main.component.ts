@@ -1,16 +1,17 @@
-import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, HostListener } from '@angular/core'
+import { Component, ChangeDetectionStrategy, ViewChild, ElementRef, HostListener, inject } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterOutlet } from '@angular/router'
+import { OpenIdService } from '../../services/open-id/open-id.service'
 
 @Component({
-  selector: 'app-main', // It's good practice to have a selector
   templateUrl: 'main.component.html',
-  styleUrls: [], // Add a corresponding CSS file if needed
+  styleUrls: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true, // Assuming you're using standalone components
   imports: [ CommonModule, RouterOutlet ],
 })
 export class MainComponent {
+  openIdService = inject(OpenIdService) 
+
   /**
    * A boolean property to track the visibility state of the user menu.
    * `true` means the menu is visible, `false` means it's hidden.
