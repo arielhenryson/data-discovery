@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.apiService.get('http://localhost:8000/test')
+      this.apiService.get('http://localhost:8000/api/private')
     }, 2000)
   }
 }

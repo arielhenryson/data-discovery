@@ -26,6 +26,9 @@ export const appConfig: ApplicationConfig = {
         silentRenew: true,
         useRefreshToken: true,
         logLevel: LogLevel.Debug,
+        customParamsAuthRequest: {
+          audience: 'https://dev-qd64wbsipbt3podg.us.auth0.com/api/v2/',
+        },
       },
     }), provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
