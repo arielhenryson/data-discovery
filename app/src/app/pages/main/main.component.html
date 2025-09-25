@@ -1,1 +1,51 @@
-<router-outlet />
+<div class="bg-theme-dark text-theme-light-gray">
+  <header
+    class="h-16 bg-black border-b border-gray-800 flex items-center justify-between px-6 flex-shrink-0"
+  >
+    <h1 class="text-xl font-bold text-white">DataAgent</h1>
+    <div class="relative">
+      <button
+        #userMenuButton
+        (click)="toggleUserMenu()"
+        class="flex items-center focus:outline-none cursor-pointer"
+      >
+        <img
+          class="h-10 w-10 rounded-full object-cover"
+          src="https://placehold.co/100x100/1b347f/FFFFFF?text=U"
+          alt="User avatar"
+        />
+      </button>
+
+      <div
+        #userMenu
+        [class.hidden]="!isUserMenuOpen"
+        class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-10"
+      >
+        <a
+          href="#"
+          class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+          >Your Profile</a
+        >
+        <a
+          href="#"
+          class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+          >Data Sources</a
+        >
+        <a
+          href="#"
+          class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+          >Settings</a
+        >
+        <a
+          href="#"
+          class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+          >Sign out</a
+        >
+      </div>
+    </div>
+  </header>
+
+  <router-outlet />
+
+  <router-outlet />
+</div>
