@@ -1,7 +1,16 @@
-import { Component } from '@angular/core'
+import { Component, inject, OnInit } from '@angular/core'
+import { ApiService } from '../../../services/api/api.service'
 
 @Component({
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css'],
+  styleUrls: [ 'home.component.css' ],
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  apiService = inject(ApiService)
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.apiService.get('http://localhost:8000/test')
+    }, 2000)
+  }
+}

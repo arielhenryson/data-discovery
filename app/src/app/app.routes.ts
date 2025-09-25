@@ -29,8 +29,10 @@ export const routes: Routes = [
         return openIdService.oidcSecurityService.checkAuth().pipe(
           map(auth => {
             if (auth.isAuthenticated) {
-              console.log('auth', auth)
-              userStore.setUser(auth.userData)
+              userStore.setUser({
+                ...auth.userData,
+                accessToken: auth.accessToken,
+              })
               return true
             }
 

@@ -25,7 +25,10 @@ export class LoginStatusComponent implements OnInit {
       if (auth) {
         console.log('auth', auth)
    
-        this.userStore.setUser(auth.userData)
+        this.userStore.setUser({
+          ...auth.userData,
+          accessToken: auth.accessToken,
+        })
 
         this.router.navigate(['/'])
       }

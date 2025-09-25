@@ -6,9 +6,11 @@ import { provideAuth, LogLevel } from 'angular-auth-oidc-client'
 import { routes } from './app.routes'
 import { sharedConfig } from './config'
 import { provideServiceWorker } from '@angular/service-worker'
+import { ApiService } from './services/api/api.service'
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    ApiService,
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
