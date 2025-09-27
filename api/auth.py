@@ -11,9 +11,9 @@ load_dotenv()
 
 # --- Auth0 Configuration ---
 # This is the same as your Auth0 API "Identifier"
-AUTH0_AUDIENCE = os.getenv("API_AUDIENCE")
+OIDC_AUDIENCE = os.getenv("OIDC_AUDIENCE")
 # This is your Auth0 domain
-OPENID_DOMAIN = os.getenv("OPENID_DOMAIN")
+OIDC_DOMAIN = os.getenv("OIDC_DOMAIN")
 # The algorithm used to sign the token
 ALGORITHMS = ["RS256"]
 
@@ -21,12 +21,12 @@ ALGORITHMS = ["RS256"]
 # --- Environment Variable Validation ---
 # We check for the presence of the required environment variables.
 # If any are missing, we print an error to the console and exit.
-if not all([AUTH0_AUDIENCE, OPENID_DOMAIN]):
+if not all([OIDC_AUDIENCE, OIDC_DOMAIN]):
     missing_vars = []
-    if not AUTH0_AUDIENCE:
-        missing_vars.append("API_AUDIENCE")
-    if not OPENID_DOMAIN:
-        missing_vars.append("OPENID_DOMAIN")
+    if not OIDC_AUDIENCE:
+        missing_vars.append("OIDC_AUDIENCE")
+    if not OIDC_DOMAIN:
+        missing_vars.append("OIDC_DOMAIN")
 
     # Print a clear error message to standard error
     print(
@@ -49,7 +49,7 @@ class VerifyToken:
     """Does all the token verification using python-jose"""
 
     def __init__(self):
-        self.jwks_url = f'https://{OPENID_DOMAIN}/.well-known/jwks.json'
+        self.jwks_url = f'https://{OIDC_DOMAIN}/.well-known/jwks.json'
 
     def _get_jwks(self):
         """
@@ -100,8 +100,8 @@ class VerifyToken:
                 token,
                 rsa_key,
                 algorithms=ALGORITHMS,
-                audience=AUTH0_AUDIENCE,
-                issuer=f'https://{OPENID_DOMAIN}/'
+                audience=OIDC_AUDIENCE,
+                issuer=f'https://{OIDC_DOMAIN}/'
             )
             return payload
 
